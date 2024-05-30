@@ -10,6 +10,7 @@ import path from 'path';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
 import postRoutes from './routes/post.js';
+import profileRoutes from './routes/profile.js'
 import { fileURLToPath } from 'url';
 import {register} from './controllers/auth.js'
 import { verify } from "crypto";
@@ -49,6 +50,7 @@ app.post('/auth/register', upload.single('picture'), register)
 app.use('/auth', authRoutes)
 app.use('/users', userRoutes)
 app.use('/posts', postRoutes)
+app.use('/profile', profileRoutes)
 
 /* MONGOOSE SETUP */
 

@@ -3,6 +3,8 @@ import User from '../models/User.js';
 // VIEW PROFILE
 export const viewProfile = async (req, res) => {
     try {
+        const id = req.params.id
+        console.log('this is id',id)
         const user = await User.findById(req.params.id).select('-password');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -12,8 +14,6 @@ export const viewProfile = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
-import User from '../models/User.js';
 
 // Update Profile
 export const updateProfile = async (req, res) => {
@@ -41,7 +41,6 @@ export const updateProfile = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 // DELETE PROFILE
 export const deleteProfile = async (req, res) => {
